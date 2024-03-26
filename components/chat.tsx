@@ -22,7 +22,7 @@ import { Input } from './ui/input'
 import { toast } from 'react-hot-toast'
 import { usePathname, useRouter } from 'next/navigation'
 
-const IS_PREVIEW = process.env.VERCEL_ENV === 'preview'
+const IS_PREVIEW = process.env.VERCEL_ENV !== 'development';
 
 export interface ChatProps extends React.ComponentProps<'div'> {
   initialMessages?: Message[]

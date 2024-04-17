@@ -23,6 +23,7 @@ import { toast } from 'react-hot-toast'
 import { usePathname, useRouter } from 'next/navigation'
 
 const IS_PREVIEW = (process.env.VERCEL_ENV && process.env.VERCEL_ENV !== 'development') as boolean;
+console.log('process.env.VERCEL_ENV: ', process.env.VERCEL_ENV);
 
 export interface ChatProps extends React.ComponentProps<'div'> {
   initialMessages?: Message[]

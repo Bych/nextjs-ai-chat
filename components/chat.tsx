@@ -22,8 +22,9 @@ import { Input } from './ui/input'
 import { toast } from 'react-hot-toast'
 import { usePathname, useRouter } from 'next/navigation'
 
-const IS_PREVIEW = (process.env.VERCEL_ENV && process.env.VERCEL_ENV !== 'development') as boolean;
-console.log('process.env.VERCEL_ENV: ', process.env.VERCEL_ENV);
+const IS_PREVIEW = !(process.env.NEXT_PUBLIC_VERCEL_ENV === 'development');
+console.log('process.env.NEXT_PUBLIC_VERCEL_ENV: ', process.env.NEXT_PUBLIC_VERCEL_ENV);
+console.log('IS_PREVIEW', IS_PREVIEW);
 
 export interface ChatProps extends React.ComponentProps<'div'> {
   initialMessages?: Message[]
@@ -83,7 +84,7 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
       />
 
       <Dialog open={previewTokenDialog} onOpenChange={setPreviewTokenDialog}>
-        <DialogContent>
+        <DialogContent className='bg-white'>
           <DialogHeader>
             <DialogTitle>Enter your OpenAI Key</DialogTitle>
             <DialogDescription>

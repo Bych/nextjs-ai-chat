@@ -23,17 +23,18 @@ export function ChatMessage({ message, ...props }: ChatMessageProps) {
     >
       <div
         className={cn(
-          'flex size-8 shrink-0 select-none items-center justify-center rounded-md border shadow',
-          message.role === 'user'
-            ? 'bg-background'
-            : 'bg-primary text-primary-foreground'
+          'flex size-8 shrink-0 select-none items-center justify-center rounded-md',
+          'bg-[RGB(231,234,244)] text-primary-foreground p-[4px]'
         )}
       >
         {message.role === 'user' ? <IconUser /> : <IconOpenAI />}
       </div>
-      <div className="flex-1 px-1 ml-4 space-y-2 overflow-hidden">
+      <div className="flex-1 px-1 ml-4 space-y-2">
         <MemoizedReactMarkdown
-          className="prose break-words dark:prose-invert prose-p:leading-relaxed prose-pre:p-0"
+          className={cn(
+          'prose break-words dark:prose-invert prose-p:leading-relaxed prose-pre:p-0',
+          message.role !== 'user' ? 'bg-white p-5 shadow-md rounded-lg' : ''
+          )}
           remarkPlugins={[remarkGfm, remarkMath]}
           components={{
             p({ children }) {

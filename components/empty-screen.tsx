@@ -3,49 +3,71 @@ import { UseChatHelpers } from 'ai/react'
 import { Button } from '@/components/ui/button'
 import { ExternalLink } from '@/components/external-link'
 import { IconArrowRight } from '@/components/ui/icons'
+import Image from 'next/image'
 
 const exampleMessages = [
   {
-    heading: 'Explain technical concepts',
-    message: `What is a "serverless function"?`
+    heading: 'Quantos presidentes o Brasil já teve?',
+    message: 'Quantos presidentes o Brasil já teve?'
   },
   {
-    heading: 'Summarize an article',
-    message: 'Summarize the following article for a 2nd grader: \n'
+    heading: 'O que diz a lei 8.112/90?',
+    message: 'O que diz a lei 8.112/90?'
   },
   {
-    heading: 'Draft an email',
-    message: `Draft an email to my boss about the following: \n`
-  }
+    heading: 'Cite 4 princípios Tributários',
+    message: 'Cite 4 princípios Tributários'
+  },
+  {
+    heading: 'Quantos pontos preciso para ser aprovado na OAB?',
+    message: 'Quantos pontos preciso para ser aprovado na OAB?'
+  },
+
+  {
+    heading: 'Cite 3 garantias fundamentais',
+    message: 'Cite 3 garantias fundamentais'
+  },
+  {
+    heading: 'Qual art. do Código Civil aborda Herança?',
+    message: 'Qual art. do Código Civil aborda Herança?'
+  },
+  // {
+  //   heading: 'Explain technical concepts',
+  //   message: `What is a "serverless function"?`
+  // },
+  // {
+  //   heading: 'Summarize an article',
+  //   message: 'Summarize the following article for a 2nd grader: \n'
+  // },
+  // {
+  //   heading: 'Draft an email',
+  //   message: `Draft an email to my boss about the following: \n`
+  // }
 ]
 
 export function EmptyScreen({ setInput }: Pick<UseChatHelpers, 'setInput'>) {
   return (
-    <div className="mx-auto max-w-2xl px-4">
-      <div className="rounded-lg border bg-background p-8">
-        <h1 className="mb-2 text-lg font-semibold">
-          Welcome to Next.js AI Chatbot!
+    <div className="mx-auto max-w-screen-lg px-4">
+      <div className="flex justify-center items-center h-full">
+        <Image
+          src="/CabraLLM.png"
+          width={245}
+          height={245}
+          alt="Happy sheep image"
+        />
+      </div>
+      <div className="bg-background p-8">
+        <h1 className="mb-2 text-2xl font-extrabold text-center">
+          Como eu posso te ajudar?
         </h1>
-        <p className="mb-2 leading-normal text-muted-foreground">
-          This is an open source AI chatbot app template built with{' '}
-          <ExternalLink href="https://nextjs.org">Next.js</ExternalLink> and{' '}
-          <ExternalLink href="https://vercel.com/storage/kv">
-            Vercel KV
-          </ExternalLink>
-          .
-        </p>
-        <p className="leading-normal text-muted-foreground">
-          You can start a conversation here or try the following examples:
-        </p>
-        <div className="mt-4 flex flex-col items-start space-y-2">
+        <div className="mt-4 flex flex-wrap justify-center space-x-3">
           {exampleMessages.map((message, index) => (
             <Button
               key={index}
-              variant="link"
-              className="h-auto p-0 text-base"
+              variant="outline"
+              className="text-xs font-semibold shadow-none mb-3"
               onClick={() => setInput(message.message)}
             >
-              <IconArrowRight className="mr-2 text-muted-foreground" />
               {message.heading}
             </Button>
           ))}
